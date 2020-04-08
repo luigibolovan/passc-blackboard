@@ -1,4 +1,12 @@
-package products;
+package factory.products;
+
+/**
+ * @author Luigi Bolovan
+ *
+ * Default chair in progress
+ * Default = chair with backrest
+ * It is considered assembled after seat, feet, backrest and stabilizer bar are assembled
+ */
 
 public class DefaultChairInProgress extends ChairInProgress {
     private boolean mHasBackrest;
@@ -14,11 +22,6 @@ public class DefaultChairInProgress extends ChairInProgress {
 
     @Override
     public synchronized boolean isAssembled(){
-//        return mHasSeat && mHasStabilizer && mHasBackrest && mHasFeet;
-        if(hasSeat() && hasBackrest() && hasFeet() && hasStabilizer()){
-            return true;
-        }else{
-            return false;
-        }
+        return mHasSeat && mHasStabilizer && mHasBackrest && mHasFeet;
     }
 }
