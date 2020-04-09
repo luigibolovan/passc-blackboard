@@ -39,7 +39,7 @@ public class BackrestAssembler extends Assembler {
                 }
                 chairIndex++;
                 //my job here is done
-                if (numberOfAssembledChairs == mChairRepository.getChairsInProgress().size()) {
+                if (numberOfAssembledChairs == mChairRepository.getNoOfDefaultChairsInProgress()) {
                     break;
                 }
                 if (chairIndex == mChairRepository.getChairsInProgress().size()) {

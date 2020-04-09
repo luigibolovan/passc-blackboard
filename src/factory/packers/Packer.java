@@ -1,18 +1,24 @@
 package factory.packers;
 
+import factory.employeeManager.EmployeeManager;
 import factory.repository.ChairRepository;
 import factory.products.ChairInProgress;
 
 /**
  * @author Luigi Bolovan
  *
- * Packer class
- * After all pieces have been assembled, the new chair needs to be packed
+ * Packs the assembled chairs from the repository
  */
 
 public class Packer {
     protected ChairRepository mChairRepository;
+    private   EmployeeManager mEmployeeManager;
     private final static int PACK_TIME = 1000;
+
+
+    public Packer(EmployeeManager employeeManager){
+        this.mEmployeeManager = employeeManager;
+    }
 
     public void setRepository(ChairRepository blackBoard){
         this.mChairRepository = blackBoard;
@@ -44,11 +50,11 @@ public class Packer {
             }
         }
 
-        while(noOfPackedChairs < 0) {
+        while(noOfPackedChairs > 0) {
             mChairRepository.deleteChair(mChairRepository.getChairAt(noOfPackedChairs - 1));
             noOfPackedChairs--;
         }
 
-        mChairRepository.stop();
+        mEmployeeManager.stop();
     }
 }
